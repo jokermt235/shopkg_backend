@@ -1,0 +1,204 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2016-12-21 18:47+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/AdmProductTypesController.php:67;92
+msgid "The adm product type has been saved."
+msgstr ""
+
+#: Controller/AdmProductTypesController.php:70;96
+msgid "The adm product type could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/AdmProductTypesController.php:115
+msgid "The adm product type has been deleted."
+msgstr ""
+
+#: Controller/AdmProductTypesController.php:117
+msgid "The adm product type could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/AdmProductsController.php:74
+msgid "The product has been saved."
+msgstr ""
+
+#: Controller/AdmProductsController.php:78
+msgid "The product could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/AdmProductsController.php:104
+#: Controller/AdminsController.php:84
+msgid "The Product has been saved."
+msgstr ""
+
+#: Controller/AdmProductsController.php:107
+msgid "The Product could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/AdmProductsController.php:136
+#: Controller/AdminsController.php:100
+msgid "The Product could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/AdminsController.php:50
+msgid "The  User has been saved."
+msgstr ""
+
+#: Controller/AdminsController.php:53;87
+msgid "The User could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/AdminsController.php:98
+msgid "The User deleted!"
+msgstr ""
+
+#: Controller/ShopbagsController.php:124
+msgid "The shopbag has been saved."
+msgstr ""
+
+#: Controller/ShopbagsController.php:128
+msgid "The shopbag could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ShopbagsController.php:147
+msgid "The shopbag has been deleted."
+msgstr ""
+
+#: Controller/ShopbagsController.php:149
+msgid "The shopbag could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:46
+msgid "Wrong username or password!!!"
+msgstr ""
+
+#: Controller/UsersController.php:82
+msgid "The passwords do not match!"
+msgstr ""
+
+#: Controller/UsersController.php:92
+msgid "The registration failed!"
+msgstr ""
+
+#: Template/AdmProductTypes/index.ctp:21
+#: Template/AdmProducts/index.ctp:23
+#: Template/Admins/users.ctp:23
+#: Template/Shopbags/index.ctp:20
+msgid "Delete"
+msgstr "Удалить"
+
+#: Template/AdmProductTypes/index.ctp:21
+#: Template/AdmProducts/index.ctp:23
+#: Template/Admins/users.ctp:23
+msgid "Are you sure you want to     delete  {0}?"
+msgstr ""
+
+#: Template/Element/right_menu.ctp:4
+#: Template/Products/index.ctp:7
+msgid "All"
+msgstr "Все"
+
+#: Template/Layout/default.ctp:52
+msgid "Search..."
+msgstr "Поиск"
+
+#: Template/Layout/default.ctp:81
+msgid "Logout"
+msgstr "Выйти"
+
+#: Template/Layout/default.ctp:89
+msgid "Login"
+msgstr "Войти"
+
+#: Template/Layout/default.ctp:117
+msgid "Extra contacts"
+msgstr "Дополнительные контакты"
+
+#: Template/Layout/default.ctp:143
+msgid "Home page"
+msgstr "Домой"
+
+#: Template/Layout/default.ctp:151
+msgid "We are Social"
+msgstr "Социальные сети"
+
+#: Template/Layout/error.ctp:35
+#: Template/Error/error400.ctp:36
+#: Template/Error/error500.ctp:41
+msgid "Error"
+msgstr ""
+
+#: Template/Layout/error.ctp:43
+msgid "Back"
+msgstr ""
+
+#: Template/Products/index.ctp:25
+msgid "New"
+msgstr "Новый"
+
+#: Template/Products/index.ctp:28
+#: Template/Products/view.ctp:58
+msgid "Price"
+msgstr "Цена"
+
+#: Template/Products/index.ctp:28
+#: Template/Products/view.ctp:58;71
+msgid "$"
+msgstr "сом"
+
+#: Template/Products/index.ctp:44
+msgid "Add to chart"
+msgstr "В корзину"
+
+#: Template/Products/view.ctp:71
+msgid "Total"
+msgstr "Сумма"
+
+#: Template/Products/view.ctp:78
+msgid "ADD TO CHART"
+msgstr "В КОРЗИНУ"
+
+#: Template/Products/view.ctp:87
+msgid "Properties"
+msgstr "Свойства"
+
+#: Template/Products/view.ctp:91
+msgid "Proreties"
+msgstr "Свойства"
+
+#: Template/Products/view.ctp:92
+msgid "Values"
+msgstr "Значения"
+
+#: Template/Products/view.ctp:109
+msgid "Review"
+msgstr "Видео обзор"
+
+#: Template/Shopbags/index.ctp:20
+msgid "Are you sure you want to     delete # {0}?"
+msgstr "Вы уверены что хотите удалить?"
+
+#: Template/Shopbags/index.ctp:27
+msgid "The shopbag is empty"
+msgstr ""
+
+#: Template/Error/error400.ctp:37
+msgid "The requested address {0} was not found on this server."
+msgstr ""
+
+#: Template/Error/error500.ctp:39
+msgid "An Internal Error Has Occurred"
+msgstr ""
+
