@@ -25,11 +25,47 @@ class UsersController extends AppController
     public function beforeFilter(Event $event){
 
         parent::beforeFilter($event);
-        $this->Auth->allow('register');
+        $this->Auth->allow(['register','token']);
     }
 
     public function logout(){
         return $this->redirect($this->Auth->logout());
+    }
+    
+    public function token(){
+        $token = md5(time());
+        if($this->Auth->user()){
+            $user = $this->Auth->user();
+            $token = $user['token'];
+        }else{
+            $this->storeVisitor($token);
+        }
+
+        $this->set(compact('token'));
+        $this->set('_serialize', ['token']);
+    }
+    
+    private function storeVisitor($token){
+        $visitor = TableRegistry::get('Visitors')->findByToken($token)->first();
+        if(empty($visitor)){
+            $visitor = TableRegistry::get('Visitors')->newEntity();
+            $data = [
+                'token'=>$token, 
+                'ip'=> $this->request->clientIp(),
+                'user_agent' => $this->request->header('User-Agent'),
+                'last_visited' => date("Y-m-d H:i:s", time())
+            ];
+            $visitor = TableRegistry::get('Visitors')->patchEntity($visitor, $data);
+
+            if(TableRegistry::get('Visitors')->save($visitor)){
+                return true;
+            }
+        }else{
+
+            return true;
+        }
+
+        return false;
     }
 
     public function login(){
@@ -40,6 +76,11 @@ class UsersController extends AppController
                 if($user['role'] == 'admin'){
                     return $this->redirect(['controller'=>'Admins','action'=>'index']);
                 }
+                
+                if($user['role'] === 'operator'){
+                    return $this->redirect(['controller'=>'Operators','action'=>'index']);
+                }
+                
                 return $this->redirect(['controller'=>'Products','action'=>'index']);
             }
             
@@ -50,7 +91,7 @@ class UsersController extends AppController
             $this->viewBuilder()->layout('login');
         }
     }
-
+    
      public function register(){
          $this->viewBuilder()->layout('register');
          $user = $this->Users->newEntity();

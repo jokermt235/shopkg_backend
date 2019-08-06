@@ -13,7 +13,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'SHOP KG';
+$cakeDescription = 'Бишкек,онлайн магазин,электотовары, одежда';
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,17 +35,11 @@ $cakeDescription = 'SHOP KG';
 <body>
     <div class="row">
         <div class="row">
-            <div class="ui stackable horizontal inverted menu">
+            <div class="ui stackable inverted horizontal menu">
                 <div class="header item">
-                        SHOP.KG
+                    <a href="http://tamtam.kg">TAMTAM.KG</a>
                 </div>
-                <div class="item">
-                    <div class="ui icon input">
-                        <input type="text" placeholder="Search...">
-                        <i class="search link icon"></i>
-                    </div>
-                </div>
-                <div class="ui right item">
+                <div class="ui inverted right stackable menu">
                     <div class="ui inverted  stackable menu">
                         <a class="item">
                             <i class="large phone blue icon"></i>
@@ -53,11 +47,7 @@ $cakeDescription = 'SHOP KG';
                         </a>
                         <a class="item">
                             <i class="large whatsapp green icon"></i>
-                            +996 701 710 790
-                        </a>
-                        <a class="item" 
-                            href="<?= $this->Url->build(['controller'=>'Users','action'=>'login']) ?>">
-                            Login
+                            +996 709 739 956
                         </a>
                     </div>
                 </div>
@@ -67,14 +57,14 @@ $cakeDescription = 'SHOP KG';
     <div class="row"> 
         <?= $this->Flash->render() ?>
     </div>
-    <div class="ui segment">
+    <div class="ui hidden divider">
+    </div>
+    <div class="ui container">
         <div class="ui stackable grid">
             <div class="column">        
                 <?= $this->fetch('content') ?> 
             </div>
         </div>
-    </div>
-    <div class="ui divider">
     </div>
     <div class="ui divider">
     </div>
@@ -111,13 +101,13 @@ $cakeDescription = 'SHOP KG';
                      <div class="item">
                         <i class="ui large yellow mail icon"></i>
                         <div class="middle aligned content">
-                            shopkg@gmail.com
+                            tamtam.kg@tamtam.kg
                         </div>
                      </div>
                      <div class="item">
                         <i class="ui large green whatsapp icon"></i>
                         <div class="middle aligned content">
-                            +996551982230
+                            +996709739956
                         </div>
                      </div>
                     <div class="item">
@@ -129,7 +119,7 @@ $cakeDescription = 'SHOP KG';
                     <div class="item">
                         <i class="ui large blue home icon"></i>
                         <div class="middle aligned content">
-                            <a href="http://shop.kg">Home page</a>
+                            <a href="http://tamtam.kg">Home page</a>
                         </div>
                      </div>
 
@@ -142,28 +132,28 @@ $cakeDescription = 'SHOP KG';
                 <div class="ui divider">
                 </div>
                 <div class="ui items">
-                     <div class="item">
+                     <a class="item" href="https://www.facebook.com/tamtam.kg/">
                         <i class="ui large blue facebook icon"></i>
                         <div class="middle aligned content">
-                            shopkg
+                            tamtam.kg
                         </div>
-                     </div>
-                     <div class="item">
+                     </a>
+                     <a class="item" href="https://ok.ru/group/53211046346971">
                         <i class="ui large yellow odnoklassniki square icon"></i>
                         <div class="middle aligned content">
-                            shopkg
+                            tamtam.kg
                         </div>
-                     </div>
-                    <div class="item">
+                     </a>
+                    <a class="item" href="https://www.instagram.com/tamtam.tamtamkg">
                         <i class="ui large purple instagram icon"></i>
                         <div class="middle aligned content">
-                            shopkg
+                            tamtam.kg
                         </div>
-                     </div>
+                     </a>
                     <div class="item">
                         <i class="ui large blue vk icon"></i>
                         <div class="middle aligned content">
-                            Shopkg
+                            tamtam.kg
                         </div>
                      </div>
 
@@ -173,7 +163,7 @@ $cakeDescription = 'SHOP KG';
     </div>
     <div class="ui black inverted vertical footer segment">
         <div class="ui horizontal inverted divider">
-            SHOP.KG
+            TAMTAM.KG
         </div>
     </div>
 </body>

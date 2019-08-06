@@ -21,7 +21,7 @@ class ShopbagsController extends AppController
     public function beforeRender(Event $event){
         parent::beforeRender($event);
         $productTypes = TableRegistry::get('ProductTypes');
-        $product_types = $productTypes->find('all');
+        $product_types = $productTypes->find('all')->toArray();
         foreach($product_types as $product_type){
             $count = TableRegistry::get('Products')->find('all',
                 ['conditions' => ['Products.product_type_id' =>$product_type->id]]

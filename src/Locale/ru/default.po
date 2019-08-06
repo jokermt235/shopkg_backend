@@ -74,23 +74,23 @@ msgstr ""
 
 #: Controller/ShopbagsController.php:147
 msgid "The shopbag has been deleted."
-msgstr ""
+msgstr "Удаление с корзины, успешно."
 
 #: Controller/ShopbagsController.php:149
 msgid "The shopbag could not be deleted. Please, try again."
-msgstr ""
+msgstr "Позиция не может быть удалена, попробуйте снова."
 
 #: Controller/UsersController.php:46
 msgid "Wrong username or password!!!"
-msgstr ""
+msgstr "Неправильное имя пользователя или пароль!!!"
 
 #: Controller/UsersController.php:82
 msgid "The passwords do not match!"
-msgstr ""
+msgstr "Пароли не совпадают!"
 
 #: Controller/UsersController.php:92
 msgid "The registration failed!"
-msgstr ""
+msgstr "Произошла ошибка при регистрации!"
 
 #: Template/AdmProductTypes/index.ctp:21
 #: Template/AdmProducts/index.ctp:23
@@ -103,7 +103,7 @@ msgstr "Удалить"
 #: Template/AdmProducts/index.ctp:23
 #: Template/Admins/users.ctp:23
 msgid "Are you sure you want to     delete  {0}?"
-msgstr ""
+msgstr "Вы уверены что хотите удалить {0}?"
 
 #: Template/Element/right_menu.ctp:4
 #: Template/Products/index.ctp:7
@@ -138,11 +138,11 @@ msgstr "Социальные сети"
 #: Template/Error/error400.ctp:36
 #: Template/Error/error500.ctp:41
 msgid "Error"
-msgstr ""
+msgstr "Ошибка"
 
 #: Template/Layout/error.ctp:43
 msgid "Back"
-msgstr ""
+msgstr "Назад"
 
 #: Template/Products/index.ctp:25
 msgid "New"
@@ -192,13 +192,13 @@ msgstr "Вы уверены что хотите удалить?"
 
 #: Template/Shopbags/index.ctp:27
 msgid "The shopbag is empty"
-msgstr ""
+msgstr "Корзина пуста"
 
 #: Template/Error/error400.ctp:37
 msgid "The requested address {0} was not found on this server."
-msgstr ""
+msgstr "Запрашиваемая ссылка {0} не найдена на этом сервере."
 
 #: Template/Error/error500.ctp:39
 msgid "An Internal Error Has Occurred"
-msgstr ""
+msgstr "Произошла ошибка скрипта"
 

@@ -1,3 +1,5 @@
+<?= $this->element('header')?>
+<?=$this->Html->css('tamtam.css');?>
 <div class="ui secondary stackable horizontal menu">
     <div class="item">
         <div class="ui breadcrumb">
@@ -8,6 +10,8 @@
             <?php endif;?>
         </div>
     </div>
+</div>
+<div class="ui divider">
 </div>
 <div class="ui stackable four column grid">
     <?php foreach($products as $product):?>
@@ -24,13 +28,27 @@
                 <?= __('New')?>
             </a>
         <?php endif;?>
-        <div class="ui center aligned segment"> 
-            <a class="ui blue tag label"><?= __('Price')?> : <?= $product->price ?> <?= __('$') ?></a>
+        <?php 
+                $style = "";
+                if(!empty($product->discount)){ 
+                    $style="style='text-decoration:line-through !important'"; $new_price = $product->price - $product->discount;
+                }
+            ?>
+        <div class="ui center aligned vertical raised segment">
+            <a <?=$style?> class="ui blue tag label rotate45"><?= __('Price')?> : <?= $product->price ?> <?= __('$') ?></a>
+            <div>
+                <?php
+                if(!empty($product->discount)){ 
+                    echo "<a class='ui orange tag label'>Цена со скидкой : ".$new_price." ".__('$')."</a>";
+                    $product->price = $new_price;
+                }
+                ?>
+            </div>
             <div class="ui hidden divider">
             </div>
-            <div class="ui middle image fit">
+            <div>
                 <a href="<?= $this->Url->build(['controller'=>'Products','action'=>'view',$product->id]) ?>">
-                    <img class="ui image" src="<?= $this->Url->image('products/images/'.$images[0])?>">
+                    <img src="<?= $this->Url->image('products/images/small_'.$images[0])?>">
                 </a>
             </div>
             <h2 class="ui header">
@@ -39,7 +57,7 @@
             <p>
                 <?= $product->title?>
             </p>
-            <button class="ui blue button product" product_id="<?= $product->id?>">
+            <button class="ui blue primary basic button product" product_id="<?= $product->id?>">
                 <i class="shop icon"></i>
                 <?= __('Add to chart')?>
             </button>
@@ -53,9 +71,27 @@
     <div class="ui pagination menu">
         <?php if(!empty($paging['Products'])):?>
         <?php for($i=1;$i<=$paging['Products']['pageCount'];$i++):?>
-            <a class="item" href="<?= $this->Url->build(['controller'=>'Products','action'=>'index']) ?>"><?= $i?></a>
+        <?php 
+            $active = "";
+            if($i == $paging['Products']['page']) $active = 'active';
+        	if(empty($product_type)):?>
+        	<a class="item <?= $active?>" href="<?= $this->Url->build(['controller'=>'Products','action'=>'index',"?" => ["page" => $i]]) ?>"><?= $i?></a>
+        	<?php endif;?>
+        	<?php if(!empty($product_type)):?>
+        	<a class="item <?= $active?>" href="<?= $this->Url->build(['controller'=>'Products','action'=>'index',$product_type->id,"?" => ["page" => $i]])     ?>"><?= $i?></a>
+        <?php endif;?>
         <?php endfor;?>
         <?php endif;?>
+    </div>
+</div>
+<div class="ui divider">
+</div>
+<div class="ui stackable two column grid">
+    <div class="column">
+        <?= $this->element('about');?>
+    </div>
+    <div class="column">
+        <?= $this->element('provider');?>
     </div>
 </div>
 <script>
@@ -78,4 +114,5 @@
         /*$.getJSON(shopbag_url, function( data ) {
         });*/
     });
+    
 </script>

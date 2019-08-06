@@ -25,3 +25,12 @@
         </tbody>
     </thead>
 </table>
+<div class="ui container">
+    <div class="ui pagination menu">
+    <?php if(!empty($paging['ProductTypes'])):?> 
+    <?php for($i=1;$i<=$paging['ProductTypes']['pageCount'];$i++):?>                                         
+    <a class="item" href="<?= $this->Url->build(['controller'=>'AdmProductTypes','action'=>'index',"?" => ["page" => $i]]) ?>"><?= $i?></a>                                                                               
+        <?php endfor;?>                                                                                      
+        <?php endif;?>                                                                                       
+    </div>                                                                                                   
+</div>

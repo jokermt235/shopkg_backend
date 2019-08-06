@@ -13,7 +13,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'SHOP KG';
+$cakeDescription = 'tamtam.kg Бишкек,товары,онлайн магазин,электро товары,одежда обувь, чайники';
 ?>
 <!DOCTYPE html>
 <html>

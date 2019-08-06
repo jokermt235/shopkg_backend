@@ -27,3 +27,12 @@
         </tbody>
     </thead>
 </table>
+<div class="ui container">
+    <div class="ui pagination menu">
+    <?php if(!empty($paging['Users'])):?> 
+    <?php for($i=1;$i<=$paging['Users']['pageCount'];$i++):?>                                         
+    <a class="item" href="<?= $this->Url->build(['controller'=>'Admins','action'=>'users',"?" => ["page" => $i]]) ?>"><?= $i?></a>                                                                               
+        <?php endfor;?>                                                                                      
+        <?php endif;?>                                                                                       
+    </div>                                                                                                   
+</div>

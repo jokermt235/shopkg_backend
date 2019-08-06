@@ -29,21 +29,21 @@
                 <div class="column">
                     <div class="ui segment">
                         <div id="image_1" class="ui tiny image">
-                            <img src="<?= $this->Url->image('products/images/'.$images[0])?>">
+                            <img src="<?= $this->Url->image('products/images/small_'.$images[0])?>">
                         </div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="ui segment">
                         <div id="image_2" class="ui tiny image">
-                            <img src="<?= $this->Url->image('products/images/'.$images[1])?>">
+                            <img src="<?= $this->Url->image('products/images/small_'.$images[1])?>">
                         </div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="ui segment">
                         <div id="image_3" class="ui tiny image">
-                            <img src="<?= $this->Url->image('products/images/'.$images[2])?>">
+                            <img src="<?= $this->Url->image('products/images/small_'.$images[2])?>">
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,21 @@
             </div>
             <div class="ui hidden divider">
             </div>
-            <a class="ui blue tag label"><?= __('Price')?> : <?= $product->price?> <?= __('$') ?></a>
+            <?php 
+                $style = "";
+                if(!empty($product->discount)){ 
+                    $style="style='text-decoration:line-through !important'"; $new_price = $product->price - $product->discount;
+                }
+            ?>
+            <a <?=$style?>class="ui blue tag label"><?= __('Price')?> : <?= $product->price?> <?= __('$') ?></a>
+            <div>
+                <?php
+                if(!empty($product->discount)){ 
+                    echo "<a class='ui orange tag label'>Новая цена : ".$new_price.__('$')."</a>";
+                    $product->price = $new_price;
+                }
+                ?>
+            </div>
             <input type="hidden" id="product_price" value="<?= $product->price?>">
             <div class="ui hidden divider">
             </div>
@@ -115,13 +129,13 @@
 </div>
 <script>
     $('#image_1').click(function(){
-        $($('#image_box').children()[0]).attr('src',$($(this).children()[0]).attr('src'));
+        $($('#image_box').children()[0]).attr('src',$($(this).children()[0]).attr('src').replace('small_',''));
     });
     $('#image_2').click(function(){
-        $($('#image_box').children()[0]).attr('src',$($(this).children()[0]).attr('src'));
+        $($('#image_box').children()[0]).attr('src',$($(this).children()[0]).attr('src').replace('small_',''));
     });
     $('#image_3').click(function(){
-        $($('#image_box').children()[0]).attr('src',$($(this).children()[0]).attr('src'));
+        $($('#image_box').children()[0]).attr('src',$($(this).children()[0]).attr('src').replace('small_',''));
     });
 
     $('#count_input').click(function(){

@@ -1,5 +1,5 @@
 <?php
-    $cakeDescription = 'SHOP KG admin page';
+    $cakeDescription = 'Welcome to TAMTAM.KG admin page';
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,12 +29,16 @@
 <div class="ui basic segment">
     <div class="ui text menu">
             <a class="ui header item" href="<?= $this->Url->build(['controller'=>'Admins','action'=>'index'])?>">
-            Do1000.KG
+            Home
             </a>
             <div class="right menu">
                 <a class="item">
                     <i class="large user icon"></i>
                     <?= $this->request->session()->read('Auth.User.username')?>
+                </a>
+                <a class="item" href="<?=$this->Url->build(['controller'=>'Users','action'=>'logout'])?>">
+                    <i class="large sign out icon"></i>
+                    Logout
                 </a>
             </div>
     </div>
@@ -43,7 +47,7 @@
 </div>
 
 <div class="ui basic segment">
-    <div class="ui grid">
+    <div class="ui stackable grid">
         <div class="three wide column">
             <div class="ui vertical menu">
                 <div class="item">
@@ -67,6 +71,16 @@
                     </div>
                 </div>
                 <div class="item">
+                    <div class="ui header">Producers</div>
+                    <div class="menu">
+                        <a class="item" href="<?= $this->Url->build(['controller'=>'AdmProducers','action'=>'index']) ?>">
+                            List producers
+                        </a>
+                        <a class="item" href="<?= $this->Url->build(['controller'=>'AdmProducers','action'=>'add'])?>">New Producer
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
                     <div class="ui header">Users</div>
                     <div class="menu">
                         <a class="item" href="<?= $this->Url->build(['controller'=>'Admins','action'=>'users']) ?>">
@@ -74,6 +88,28 @@
                         </a>
                         <a href="<?= $this->Url->build(['controller'=>'Admins','action'=>'add'])?>" class="item">
                             New user
+                        </a>
+                        <a class="item" href="<?= $this->Url->build(['controller'=>'Visitors','action'=>'index']) ?>">
+                            Visitors
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ui header">Customers</div>
+                    <div class="menu">
+                        <a class="item" href="<?= $this->Url->build(['controller'=>'AdmCustomers','action'=>'index']) ?>">
+                            Customers
+                        </a>
+                        <a href="<?= $this->Url->build(['controller'=>'AdmCustomers','action'=>'add'])?>" class="item">
+                            New Customer
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ui header">Sales</div>
+                    <div class="menu">
+                        <a class="item" href="<?= $this->Url->build(['controller'=>'AdmSales','action'=>'index']) ?>">
+                            Sales
                         </a>
                     </div>
                 </div>
@@ -88,7 +124,7 @@
 </div>
 <div>
     <div class="ui basic center aligned segment">
-        <div class="ui header">(C) Powered By DO1000.KG.</div>
+        <div class="ui header">(C) Powered By devel.tamtam.kg</div>
     </div>
 </div>
 </body>

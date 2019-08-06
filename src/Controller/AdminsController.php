@@ -5,7 +5,7 @@ use Cake\Auth\DefaultPasswordHasher;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
-
+use Cake\Cache\Cache;
 /**
  * Admins Controller
  *
@@ -31,11 +31,22 @@ class AdminsController extends AppController
     }
 
     public function index(){
+        $visitors = Cache::read('visitors');
+        $total_products = TableRegistry::get('Products')->find('all')->count();
+        $total_users = TableRegistry::get('Users')->find('all')->count();
+        $query = TableRegistry::get('Sales')->find();
+        $profits = $query->select(['count' => $query->func()->sum('profit')])->first()->count;
+        $this->set('total_products',$total_products);
+        $this->set('visitors',$visitors);
+        $this->set('gain', $profits);
+        $this->set('total_users', $total_users);
+
     }
 
     public function users(){
         $users = $this->paginate(TableRegistry::get('Users')->find('all'));
         $this->set(compact('users'));
+        $this->set('paging', $this->request->params['paging']);
         $this->set('_serialize', ['users']);       
     }
 

@@ -33,6 +33,7 @@ class AdmProductTypesController extends AppController
         $product_types = TableRegistry::get('ProductTypes');
         $product_types = $this->paginate($product_types->find('all'));
         $this->set(compact('product_types'));
+        $this->set('paging', $this->request->params['paging']);
         $this->set('_serialize', ['product_types']);
     }
 

@@ -97,6 +97,21 @@ class AppController extends Controller
         // Default deny
         return false;
     }
+    
+    public function isOperator(){
+
+        $user = $this->Auth->user();
+
+        // Only admin and operators can access admin functions
+        
+        if ($user['role'] === 'admin' || $user['role'] === 'operator') {
+            return true;
+        }
+
+        // Default deny
+        return false;
+    }
+
 
     public function isAuthorized($user){
         // Admin can access every action

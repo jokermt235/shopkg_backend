@@ -12,12 +12,20 @@
             <?= $this->Form->select('product_type_id',$product_types);?>
         </div>
         <div class="field">
+            <div class="label">Producer</div>
+            <?= $this->Form->select('producer_id',$producers);?>
+        </div>
+        <div class="field">
             <div class="label">Title</div>
             <input name="title" type="text">
         </div> 
         <div class="field">
             <div class="label">Price</div>
             <input type="text" name="price" >
+        </div>
+        <div class="field">
+            <div class="label">Discount</div>
+            <input type="text" name="discount" >
         </div>
         <div class="field">
             <div class="label">New</label>

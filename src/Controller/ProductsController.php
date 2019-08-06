@@ -4,6 +4,8 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
+use Cake\Cache\Cache;
+use Cake\Network\Request;
 
 /**
  * Products Controller
@@ -16,13 +18,13 @@ class ProductsController extends AppController
 
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
-        $this->Auth->allow(['index','view']);
+        $this->Auth->allow(['index','view','delivery']);
     }
 
     public function beforeRender(Event $event){
         parent::beforeRender($event);
         $productTypes = TableRegistry::get('ProductTypes');
-        $product_types = $productTypes->find('all');
+        $product_types = $productTypes->find('all')->toArray();
         foreach($product_types as $product_type){
             $count = $this->Products->find('all',
                 ['conditions' => ['Products.product_type_id' =>$product_type->id]]
@@ -49,7 +51,6 @@ class ProductsController extends AppController
      */
     public function index($product_type_id=null)
     {   
-        
         if(empty($product_type_id)){
             if(!empty($this->request->query['search'])){
                 $term = $this->request->query['search'];
@@ -64,15 +65,17 @@ class ProductsController extends AppController
                 $products = $this->paginate(
                     $this->Products->find('all',[
                         'conditions'=>$conditions
-                    ])
+                    ])->order(['created' => 'DESC'])
                 );
 
             }else{
-                $products = $this->paginate($this->Products);
+                $products = $this->paginate($this->Products->find()->order(['created' => 'DESC']));
             }
+            
+            $this->set('title', "Все товары");
         }else{
             $products = $this->paginate($this->Products->find('all',
-                ['conditions'=>['Products.product_type_id'=>$product_type_id]])
+                ['conditions'=>['Products.product_type_id'=>$product_type_id]])->order(['created' => 'DESC'])
             );
 
             $product_type = TableRegistry::get('ProductTypes')->get($product_type_id,[
@@ -80,12 +83,29 @@ class ProductsController extends AppController
             ]);
 
             $this->set(compact('product_type'));
+            $this->set('title', $product_type->name);
         }
+        
+        
         
         $this->set('paging', $this->request->params['paging']);
         $this->set(compact('products'));
         $this->set(compact('offset'));
         $this->set('_serialize', ['products']);
+        $ip_key = md5($this->request->clientIp());
+        try{
+            if(empty(Cache::read($ip_key))){
+                $visitors = Cache::read('visitors');
+                if(empty($visitors)){
+                    $visitors = 0;
+                }   
+                $visitors+=1;
+                Cache::write('visitors',$visitors);
+                Cache::write(md5($this->request->clientIp()),$visitors);
+            }   
+        }catch(Exception $e){
+
+        }  
     }
 
     /**
@@ -110,6 +130,11 @@ class ProductsController extends AppController
 
         $this->set('product', $product);
         $this->set('_serialize', ['product']);
+        $this->set('title', $product->name);
+    }
+    
+    public function delivery(){
+        
     }
     
 }

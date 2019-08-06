@@ -10,7 +10,7 @@
         </div>
         <div class="field">
             <div class="label">Product type</div>    
-            <select>
+            <select name="product_type_id">
             <?php foreach($product_types as $product_type):?>
             <?php $selected = ''?>
             <?php 
@@ -20,7 +20,23 @@
                     $selected = '';
                 }
             ?>
-                <option <?=$selected?>><?= $product_type->name?></option>
+                <option value=<?= $product_type->id?> <?=$selected?>><?= $product_type->name?></option>
+            <?php endforeach;?>
+            </select>
+        </div>
+        <div class="field">
+            <div class="label">Producers</div>    
+            <select name="producer_id">
+            <?php foreach($producers as $producer):?>
+            <?php $selected = ''?>
+            <?php 
+                if($producer->id == $admProduct->producer_id){
+                    $selected = 'selected';
+                }else{
+                    $selected = '';
+                }
+            ?>
+                <option value=<?= $producer->id ?><?=$selected?>><?= $producer->name?></option>
             <?php endforeach;?>
             </select>
         </div>
@@ -31,6 +47,10 @@
         <div class="field">
             <div class="label">Price</div>
             <input type="text" name="price" value="<?= @$admProduct->price?>">
+        </div>
+        <div class="field">
+            <div class="label">Discount</div>
+            <input type="text" name="discount" value="<?= @$admProduct->discount?>">
         </div>
         <div class="field">
             <div class="label">New</label>

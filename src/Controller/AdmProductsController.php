@@ -39,6 +39,9 @@ class AdmProductsController extends AppController
             'contain'=>[]])->name;
         }
         $this->set(compact('products'));
+        
+        $this->set('paging', $this->request->params['paging']);
+        
         $this->set('_serialize', ['products']);
     }
 
@@ -80,7 +83,9 @@ class AdmProductsController extends AppController
         }
         
         $this->set('product_types', TableRegistry::get('ProductTypes')->find('list'));
-
+        
+        $this->set('producers', TableRegistry::get('Producers')->find('list'));
+        
         $this->set(compact('admProduct'));
         $this->set('_serialize', ['admProduct']);
     }
@@ -109,7 +114,9 @@ class AdmProductsController extends AppController
         }
         
         $this->set('product_types', TableRegistry::get('ProductTypes')->find('all'));
-
+        
+        $this->set('producers', TableRegistry::get('Producers')->find('all'));
+        
         $this->set(compact('admProduct'));
         $this->set('_serialize', ['admProduct']);
     }
@@ -130,6 +137,7 @@ class AdmProductsController extends AppController
             if(!empty($images)){
                 foreach($images as $image){
                     unlink(Configure::read('Images.image_path').$image);
+                    unlink(Configure::read('Images.image_path')."small_".$image);
                 }
             }
         } else {
@@ -149,5 +157,29 @@ class AdmProductsController extends AppController
     public function deleteImage(){
         $this->Image->delete($this->request->data['image']);
     }
+    
+    public function optimizeimg($id=null){
+        $products = $this->paginate(TableRegistry::get('Products')->find('all'));
+        $counter = 0;
+        if(!empty($id)){
+            $product = TableRegistry::get('Products')->get($id);
+            $images = json_decode(base64_decode($product->images));
+            foreach($images as $image){
+                $this->Image->createSmallImage(Configure::read('Images.image_path').$image);
+            }
+            $this->Flash->success('Image optimization completed , optimized files count : '.$counter);
+        }else{
+            foreach($products as $product){
+                $images = json_decode(base64_decode($product->images));
+                foreach($images as $image){
+                    $this->Image->createSmallImage(Configure::read('Images.image_path').$image);
+                    $counter++;
+                }
+            }
+        }
+        
+        $this->Flash->success('Image optimization completed , optimized files count : '.$counter);
+    }
+    
 
 }
