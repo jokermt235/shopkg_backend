@@ -1,0 +1,19 @@
+.chat_box{
+    position:fixed;
+    bottom:0;
+    right:0;
+    z-index:999;
+    max-width: 400px;
+    overflow-x: hidden;
+}
+
+#msg_input{
+    overflow:hidden !important;
+    resize: none !important;
+}
+.messages{
+    max-height:300px;
+    overflow-y : auto;
+    margin-bottom:10px;
+}
+
